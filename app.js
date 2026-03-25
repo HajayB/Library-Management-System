@@ -1,6 +1,7 @@
+const dotenv = require("dotenv");
 const express = require("express");
 const app = express();
-const dotenv = require("dotenv");
+
 const connectDB = require("./config/db");
 const fs = require('fs');
 const path = require('path');
@@ -8,6 +9,7 @@ require("./utils/cronJob")// Import cron jobs to run them
 
 
 // Load environment variables
+
 dotenv.config();
 // Connect to MongoDB
 connectDB();
@@ -50,7 +52,7 @@ app.get("/api/about", (req, res) => {
 });
 
 app.get("/api/users/dashboard", (req,res)=>{
-  res.sendFile(path.join(__dirname, "public", "dashboard.html"));
+  res.sendFile(path.join(__dirname, "public", "userDash.html"));
 })
 
 app.get("/api/users/admin/dashboard", (req,res)=>{
@@ -77,7 +79,19 @@ app.get("/api/users/summary", (req,res)=>{
   res.sendFile(path.join(__dirname, "public", "summary.html"))
 })
 
+// 404 handler
+app.use((req, res, next) => {
+  res.status(404).json({ message: "Route not found" });
+  next();
+});
 
+// Error handler
+const {errorHandler} = require('./middleware/errorhandler');
+app.use(errorHandler);
+
+
+const PORT = process.env.PORT || 3500;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 
@@ -99,16 +113,3 @@ app.get("/api/users/summary", (req,res)=>{
 //   res.json({ message: "Library Management System API is running 🚀" });
 // });
 
-// 404 handler
-app.use((req, res, next) => {
-  res.status(404).json({ message: "Route not found" });
-  next();
-});
-
-// Error handler
-const {errorHandler} = require('./middleware/errorhandler');
-app.use(errorHandler);
-
-
-const PORT = process.env.PORT || 3500;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -29,7 +29,7 @@ exports.borrowBook = async (req, res) => {
     // 🧾 Create a borrow record (book ID guaranteed)
     const borrowRecord = await BorrowRecord.create({
       user: req.user._id,
-      book: book._id, // ✅ Always use the actual book _id
+      book: book._id, //   use the actual book _id
       borrowDate,
       dueDate,
     });

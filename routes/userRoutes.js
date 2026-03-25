@@ -2,9 +2,9 @@
 const express = require("express");
 const router = express.Router();
 const { profile, signup, signin, getUserProfileByAdmin, logout,getUsers, getUserDetails } = require("../controllers/userController");
-const { protect,adminOnly } = require("../middleware/authMiddleware");
+const { protect,adminOnly, onlyOneAdmin } = require("../middleware/authMiddleware");
 
-router.post("/signup", signup);
+router.post("/signup",onlyOneAdmin, signup);
 router.post("/login", signin);
 router.get("/myprofile", protect, profile);//user summary
 router.post("/logout", protect, logout); //logout 

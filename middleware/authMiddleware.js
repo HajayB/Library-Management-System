@@ -37,3 +37,15 @@ module.exports.adminOnly = (req, res, next) => {
     return res.status(403).json({ message: "Access denied: Admins only" });
   }
 };
+
+module.exports.onlyOneAdmin = async (req, res, next) => {
+  try {
+    const adminCount = await User.countDocuments({ role: "admin" });
+    if (adminCount >= 1) {
+      return res.status(400).json({ message: "Only one admin allowed" });
+    }
+    next();
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
+  }
+};
