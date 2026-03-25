@@ -96,7 +96,7 @@ MONGO_URI=your_database_url
 JWT_SECRET=your_secret
 
 Run the Server
-npm run start
+npm start
 
 
                                         API Endpoints
@@ -132,6 +132,14 @@ PUT	            /api/borrow/:id	              Update borrow record
   📊 Summary
 Method	      Endpoint	            Description
 GET	          /api/summary	        Admin dashboard summary
+
+                              🔑 Test Access
+
+Admin functionality is available after authentication.
+
+You can test endpoints using:
+- Postman
+- or the provided frontend interface
 
                                 🔐 Access Control Summary
 Feature	                Member	                Admin
@@ -175,9 +183,11 @@ Planned features include:
 - Borrow/return interactions
 - Admin panel for managing books and users
 - Data visualization for system insights
+- 
+- Admin features are fully implemented
+- User-facing interface is in progress
 
-The backend API is fully functional and ready for integration.
-
+The API is fully functional and can be tested via tools like Postman.
 
                                         What I Learned
 
