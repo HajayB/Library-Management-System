@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="/css/login.css">
+  <script defer src="/js/login.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <nav class="nav">
+    <div class="left">
+      <a href="/">Home</a>
+    </div>
+    <div class="right">
+      <a href="/api/users/signup">Sign Up</a>
+    </div>
+        
+  </nav>
+
+
+  <div class="form-section">
+
+    <div class="put_center">
+      <h4 >Welcome Back!</h4>
+    </div>
+    
+    <form id="signinForm">
+      <div>
+        <input type="email" placeholder="Email address" required name="email">
+        <input type="password" placeholder="Password" required name="password">
+      </div>
+
+      <div class="RemLabel">
+        <label>
+        <input type="checkbox" name="rememberMe"  class="inputEP">
+          Remember me
+        </label>
+      </div>
+
+
+      <div class="button-group">
+        <button type="submit" class="change-method" id="login_btn" >Log In</button>
+      </div>
+
+
+  </div>
+</div>
+<p class="error-message" style="color: red; display: none;"></p>
+</body>
+</html>

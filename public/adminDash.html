@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library System Dashboard</title>
+  <link rel="stylesheet" href="/css/adminDash.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="/js/adminDash.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-icon">📘</span>
+        <h2>Library System</h2>
+      </div>
+      <nav class="nav">
+        <a href="/api/users/admin/dashboard" class="active"><i class="icon">🏠</i> Dashboard</a>
+        <a href="/api/users/admin/usermanagement"><i class="icon">👥</i> Users Management</a>
+        <a href="/api/users/admin/bookmanagement"><i class="icon">📚</i> Books Management</a>
+        <a href="/api/users/admin/borrowedrecords"><i class="icon">📖</i> Borrowed Records</a>
+        <a href="/api/users/admin/overdue"><i class="icon">⚠️</i> Overdue Records</a>
+      </nav>
+      <button class="logout" id="logoutBtn"><i class="icon">↩️</i> Logout</button>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <!-- Top bar -->
+      <header class="topbar">
+        <div class="admin-info">
+          <span id="admin-name">Admin Name</span>
+          <span class="admin-role">Admin</span>
+        </div>
+        <div class="topbar-right">
+          <!-- ==== SEARCH BAR ==== -->
+          <!-- <input type="text" placeholder="Search users, books, records..." class="search-box" id="searchInput" /> -->
+
+          <button id="theme-toggle" class="theme-toggle">🌙</button>
+          <button id="menu-toggle" class="menu-toggle">☰</button>
+        </div>
+      </header>
+
+      <!-- Dashboard Overview -->
+      <section class="dashboard">
+        <h2>Dashboard Overview</h2>
+        <p class="subtitle">Welcome back! Here's what's happening with your library today.</p>
+
+        <!-- Stats section -->
+        <div class="stats-cards">
+          <div class="card">
+            <div class="card-icon">👥</div>
+            <div>
+              <h3>Total Users</h3>
+              <p></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">📚</div>
+            <div>
+              <h3>Total Books</h3>
+              <p></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">📖</div>
+            <div>
+              <h3>Currently Borrowed</h3>
+              <p></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <div>
+              <h3>Overdue Books</h3>
+              <p>23</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart section -->
+        <div class="charts">
+          <div class="chart-box">
+            <h3>Borrowing Activity per(month)</h3>
+            <canvas id="activityChart"></canvas>
+          </div>
+          <div class="chart-box">
+            <h3>Borrowed Books by Category</h3>
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Table section -->
+      <div class="borrowed">
+        <h2>Most borrowed books</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Book Title</th>
+              <th>Category</th>
+              <th>Borrow Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+
+</body>
+</html>

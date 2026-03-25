@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="/css/signup.css">
+  <script defer src="/js/signup.js"></script>
+</head>
+<body>
+<div class="container">
+  <nav class="nav">
+    <div class="left">
+      <a href="/">Home</a>
+    </div>
+    <div class="right">
+      <a href="/api/users/login">Sign In</a>
+    </div>
+        
+  </nav>
+
+
+    <div class="form-section">
+      <div class="put_center">
+      <h4 >START FOR FREE</h4>
+      <h1>Create new account<span class="dot"></span></h1>
+
+    </div>
+      <form>  
+        <div class="name-group">
+          <input type="text" name="firstname" placeholder="First name" required>
+          <input type="text" name="lastname" placeholder="Last name" required>
+        </div>
+        <input type="email" name="email" placeholder="Email address" required>        
+        <input type="password" name="password" placeholder="Password" required>
+
+        <div class="radio_btn">
+            <input type="radio" name="role" id="admin">
+            <label for="admin">Admin</label>
+            <input type="radio" name="role" id="member">
+            <label for="member">member</label>
+        </div>
+        <div class="button-group">
+          <button type="submit" class="create-account">Create account</button>
+        </div>
+
+        <!-- <div class="divider">
+          <span>or sign up with</span>
+        </div>
+
+        <div class="social-buttons">
+          <button class="social github">GitHub</button>
+          <button class="social google">Google</button>
+          <button class="social facebook">Facebook</button>
+        </div> -->
+      </form>
+    </div>
+  </div>
+</body>
+</html>

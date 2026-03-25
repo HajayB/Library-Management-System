@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library System Books Management</title>
+  <link rel="stylesheet" href="/css/userManagement.css" />
+  <script defer type="module" src="/js/userManagement.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-icon">📘</span>
+        <h2>Library System</h2>
+      </div>
+      <nav class="nav">
+        <a href="/api/users/admin/dashboard" ><i class="icon">🏠</i> Dashboard</a>
+        <a href="/api/users/admin/usermanagement" class="active"><i class="icon">👥</i> Users Management</a>
+        <a href="/api/users/admin/bookmanagement" ><i class="icon" >📚</i> Books Management</a>
+        <a href="/api/users/admin/borrowedrecords"><i class="icon">📖</i> Borrowed Records</a>
+        <a href="/api/users/admin/overdue"><i class="icon">⚠️</i> Overdue Records</a>
+      </nav>
+      <button class="logout" id="logoutBtn"><i class="icon">↩️</i> Logout</button>
+    </aside>
+
+            <!-- Main content -->
+    <main class="main-content">
+            <!-- Top bar -->
+        <header class="topbar">
+            <div class="admin-info">
+                <span id="admin-name">Admin Name</span>
+                <span class="admin-role">Admin</span>
+            </div>
+            <div class="topbar-right">
+                <button id="theme-toggle" class="theme-toggle">🌙</button>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+
+        </header>
+
+        <section>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <h3>Total Users</h3>
+                <p id="totalUsers">120</p>
+              </div>
+
+              <div class="stat-card">
+                <h3>Active Members</h3>
+                <p id="activeMembers">85</p>
+              </div>
+
+              <div class="stat-card">
+                <h3>Users w/ Overdue</h3>
+                <p id="overdueUsers">12</p>
+              </div>
+
+              <div class="stat-card">
+                <h3>New This Month</h3>
+                <p id="newUsers">24</p>
+              </div>
+            </div>
+
+        </section>
+
+        <section class="searchNfilter">
+          <!-- Search / Filter / Sort Section -->
+          <div class="user-controls">
+            <div class="control-group">
+              <label for="search">Search:</label>
+              <input type="text" id="search" placeholder="Search users...">
+            </div>
+
+            <div class="control-group">
+              <label for="filter">Filter:</label>
+              <select id="filter">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="sort">Sort:</label>
+              <select id="sort">
+                <option value="borrowCountDesc">Borrow Count ▼</option>
+                <option value="borrowCountAsc">Borrow Count ▲</option>
+                <option value="nameAsc">Name A-Z</option>
+                <option value="nameDesc">Name Z-A</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="user-list-container">
+            <h2>User List</h2>
+            <table class="user-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Borrow Count</th>
+                  <th>Contact</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- User rows will be dynamically inserted here -->
+              </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <div class="pagination">
+              <button class="page-btn">Prev Page</button>
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">3</button>
+              <button class="page-btn">Next Page</button>
+            </div>
+          </div>
+        </section>
+
+
+<!-- User Details Modal -->
+<div id="userModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>USER DETAILS</h2>
+    <div class="user-info">
+      <p><strong>Full Name:</strong> <span id="fullName"></span></p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <p><strong>Phone:</strong> <span id="phone"></span></p>
+      <p><strong>Full Address:</strong> <span id="address"></span></p>
+      <p><strong>Joined On:</strong> <span id="joinedOn"></span></p>
+      <p><strong>Status:</strong> <span id="status"></span></p>
+    </div>
+
+    <h3>Additional Information</h3>
+    <div class="additional-info">
+      <p><strong>Borrow Count:</strong> <span id="borrowCount"></span></p>
+      <p><strong>Overdue Books:</strong> <span id="overdueBooks"></span></p>
+      <p><strong>Last Active:</strong> <span id="lastActive"></span></p>
+      <p><strong>Total Fines (Accumulated):</strong> <span id="totalFines"></span></p>
+    </div>
+
+    <h3>Borrow History</h3>
+    <ul id="borrowHistory"></ul>
+
+    <button class="close-btn-bottom">Close</button>
+  </div>
+</div>
+
+
+
+</main>
+</div>
+<p class="error-message" style="color: red; display: none;"></p>
+<p class="success-message" style="color: green; display: none;"></p>
+</body>
+</html>        

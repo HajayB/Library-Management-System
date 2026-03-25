@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Management System</title>
+<link rel="stylesheet" href="./css/index.css">
+<script defer src="./js/index.js"></script>
+</head>
+<body>
+  <!-- ==== NAVBAR ==== -->
+  <nav>
+    <div class="nav-left">
+      <a alt="homepage" href="/"><h1>Library</h1></a>
+    </div>
+    <div class="nav-right">
+      <a href="/api/about">About</a>
+      <a href="/api/users/login">Login</a>
+      <a href="/api/users/signup">Signup</a>
+    </div>
+  </nav>
+
+  <!-- ==== HERO ==== -->
+  <section class="hero">
+    <h2>Welcome to the Library</h2>
+    <p>Discover, explore, and borrow from our wide collection of books. Search for titles, authors, or categories below.</p>
+  </section>
+
+  <!-- ==== SEARCH BAR ==== -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search for books..." />
+  </div>
+
+  <!-- ==== BOOKS GRID ==== -->
+  <div class="books-grid" id="booksContainer">
+    <!-- Books will be dynamically inserted here -->
+  </div>
+
+  <!-- ==== FOOTER ==== -->
+  <footer>
+    © 2026 Library Management System — All rights reserved.
+  </footer>
+
+</body>
+</html>

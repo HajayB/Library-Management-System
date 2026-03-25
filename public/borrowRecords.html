@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library System Borrow Records</title>
+  <link rel="stylesheet" href="/css/borrowRecords.css" />
+  <script defer type="module" src="/js/borrowRecords.js"></script>
+</head>
+<body>
+<div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-icon">📘</span>
+        <h2>Library System</h2>
+      </div>
+      <nav class="nav">
+        <a href="/api/users/admin/dashboard" ><i class="icon">🏠</i> Dashboard</a>
+        <a href="/api/users/admin/usermanagement"><i class="icon">👥</i> Users Management</a>
+        <a href="/api/users/admin/bookmanagement" ><i class="icon" >📚</i> Books Management</a>
+        <a href="/api/users/admin/borrowedrecords" class="active"><i class="icon">📖</i> Borrowed Records</a>
+        <a href="/api/users/admin/overdue"><i class="icon">⚠️</i> Overdue Records</a>
+      </nav>
+      <button class="logout" id="logoutBtn"><i class="icon">↩️</i> Logout</button>
+    </aside>
+
+
+
+            <!-- Main content -->
+    <main class="main-content">
+            <!-- Top bar -->
+        <header class="topbar">
+            <div class="admin-info">
+                <span id="admin-name">Admin Name</span>
+                <span class="admin-role">Admin</span>
+            </div>
+            <div class="topbar-right">
+                <button id="theme-toggle" class="theme-toggle">🌙</button>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+
+        </header>
+
+        <!-- Borrowed Records Summary Cards -->
+<div class="borrow-summary">
+  <div class="card">
+    <span class="label" >Records</span>
+    <span class="value" id="totalRecords" name="records">0</span>
+  </div>
+  <div class="card">
+    <span class="label">Returned</span>
+    <span class="value" id="returnedRecords" name="returned">0</span>
+  </div>
+  <div class="card">
+    <span class="label">Borrowed</span>
+    <span class="value" id="borrowedRecords" name="borrowed">0</span>
+  </div>
+  <div class="card">
+    <span class="label">Overdue</span>
+    <span class="value" id="overdueRecords" name="overdue">0</span>
+  </div>
+  <div class="card">
+    <span class="label">Total Fines</span>
+    <span class="value" id="totalFines" name="totalfines"></span>
+  </div>
+</div>
+<!-- Table section -->
+      <div class="borrowRecordsTable">
+        <div class="side-by-side">
+          <h2>Recently Added books</h2>
+                  <!-- ==== SEARCH BAR ==== --> 
+          <input type="text" placeholder="Search user records..." class="search-box" id="searchInput" />
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Book </th>
+              <th>Borrowed Date</th>
+              <th>Due Date</th>
+              <th>Return Date</th>
+              <th>Status</th>
+              <th>Fine Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+        <button id="toggleRecords" style="display:none;" class="show-more-btn">Show More</button>
+        
+      </div>
+      
+      <!-- Edit Record Modal -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Edit Record</h2>
+    <form id="editForm">
+      <input type="hidden" name="id" />
+
+      <label>Member</label>
+      <input type="text" name="member" readonly />
+
+      <label>Book</label>
+      <input type="text" name="book"  readonly/>
+
+      <label>Borrowed Date</label>
+      <input type="text" name="bDate" readonly>
+
+      <label>Due Date</label>
+      <input type="text" name="dDate"  />
+
+      <label>Return Date</label>
+      <input type="text" name="rDate" readonly />
+
+      <label>Status</label>
+      <input type="text" name="status" readonly />
+
+      <label>Fine Amount</label>
+      <input type="number" name="fineAmount" />
+
+      <button type="submit" class="save">Save Changes</button>
+    </form>
+  </div>
+</div>
+
+
+</main>    
+
+</div>
+</body>
+</html>
+    

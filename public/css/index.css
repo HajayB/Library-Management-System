@@ -1,0 +1,146 @@
+    /* ==== RESET ==== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #0d1117;
+      color: #e6edf3;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ==== NAVBAR ==== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      background-color: #111827;
+      border-bottom: 1px solid #1f2937;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-left a{
+      text-decoration: none;
+    }
+
+    .nav-left h1 {
+      font-size: 1.6rem;
+      color: #3b82f6;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-right a {
+      color: #e6edf3;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-right a:hover {
+      color: #3b82f6;
+    }
+
+    /* ==== HERO ==== */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .hero p {
+      color: #9ca3af;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* ==== SEARCH BAR ==== */
+    .search-container {
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      background-color: #1f2937;
+      color: #fff;
+      box-shadow: 0 0 0 2px #3b82f6;
+      transition: all 0.2s ease;
+    }
+
+    .search-container input:focus {
+      box-shadow: 0 0 12px #2563eb;
+    }
+
+    /* ==== BOOK GRID ==== */
+    .books-grid {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .book-card {
+      background-color: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      padding: 1.2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
+    }
+
+    .book-card h3 {
+      color: #3b82f6;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .book-card p {
+      color: #d1d5db;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ==== FOOTER ==== */
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      border-top: 1px solid #1f2937;
+      margin-top: auto;
+    }
