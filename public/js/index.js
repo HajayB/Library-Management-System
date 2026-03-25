@@ -26,18 +26,6 @@ function displayBooks(books) {
   }
 
   books.forEach((book) => {
-    // const card = document.createElement("div");
-    // card.classList.add("book-card");
-    // const handleOnClick = ()=>{alert("Please login to view full details of this book.")}
-
-    // card.innerHTML = `
-    //   <div class="book-title" onclick=handleOnClick >${book.title}</div>
-    //   <div class="book-author">By: ${book.author}</div>
-    //   <div class="book-category">Category: ${book.category}</div>
-    // `;
-
-    // bookGrid.appendChild(card); 
-
     const card = document.createElement("div");
     card.classList.add("book-card");
 
