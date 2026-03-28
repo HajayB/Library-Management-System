@@ -57,7 +57,7 @@ catch(error){
     showError(error.message);
 }
 }
-setInterval(getOverDueCount, 2000);
+// getOverDueCount called together with getAllRecords below
 
  
 // TABLE DATA
@@ -131,7 +131,7 @@ catch (err) {
   showError("Something went wrong while loading overdue records.");
 }
 }
-getAllRecords();
+Promise.all([getOverDueCount(), getAllRecords()]);
 // ======================= SEARCH FOR RECORD BY NAME OR TITLE=======================
 async function searchOverdue(query) {
   query = query.trim();
@@ -174,9 +174,6 @@ searchBar.addEventListener("input", (e) => {
   searchOverdue(query);
 });
 
-//==================RELOAD ALL OVERDUE RECORD AFTER SEARCH(10SECS LIMIT)====================
-
-setInterval(getAllRecords, 10000);
 
 // === Show More / Show Less Toggle ===
 const toggleBtn = document.getElementById("toggleRecords");

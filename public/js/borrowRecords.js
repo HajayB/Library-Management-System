@@ -38,58 +38,42 @@ const successBox = document.querySelector(".success-message");
     }
   }
 //==============DISPLAY CARDS FOR TOP DISPLAY ==========================
-const totalRecords = document.querySelector("span[name='records']"); 
-const totalBorrowed = document.querySelector("span[name='borrowed']"); 
-const totalReturned = document.querySelector("span[name='returned']"); 
-const totalOverdue = document.querySelector("span[name='overdue']"); 
-let totalFines = document.querySelector("span[name='totalfines']"); 
+const totalRecords = document.querySelector("span[name='records']");
+const totalBorrowed = document.querySelector("span[name='borrowed']");
+const totalReturned = document.querySelector("span[name='returned']");
+const totalOverdue = document.querySelector("span[name='overdue']");
+let totalFines = document.querySelector("span[name='totalfines']");
 const tableBody = document.querySelector(".borrowRecordsTable tbody");
 const toggleBtn = document.getElementById("toggleRecords");
+const searchInput = document.getElementById("searchInput");
 
 
-let allRecords = []; // empty array to keep books for later 
+let allRecords = [];
 let filteredRecords = [];
-let showingAll = false; // toggle state
+let showingAll = false;
 
-
-//================DATA FOR THE CARDS========================
-async function updatecards(){
-  try{
-    const res = await fetch ("/api/borrowed", {headers})
-    if(!res.ok){showError(error)}
-    
-    const cards = await res.json();
-
-    totalRecords.textContent = cards.length;
-    totalReturned.textContent = cards.filter(record => record.status === "returned").length;
-    totalBorrowed.textContent = cards.filter(record => record.status === "borrowed" ).length;
-    totalOverdue.textContent = cards.filter(record => record.status === "overdue" ).length;
-
-    const totalFinesAmount= cards.reduce((sum, record) => sum + (Number(record.fineAmount) || 0), 0);
-
-    // Format with commas and add ₦
-    totalFines.textContent = `₦${totalFinesAmount.toLocaleString()}`;
-
-
-}catch(error){
-    showError(error || "Error loading cards.")
-}
-}
-setInterval(updatecards,1000);
-
-async function fetchRecords(){
-  try{
+// Single fetch — populates both cards and table
+async function loadRecords() {
+  try {
     const res = await fetch("/api/borrowed", { headers });
-    if(!res.ok) throw new Error("Error fetching records");
+    if (!res.ok) throw new Error("Error fetching records");
 
     const records = await res.json();
     allRecords = records;
-    filteredRecords = [...allRecords]; // SPREADS ALL RECORDS INTO FILTEREDRECORDS 
+    filteredRecords = [...allRecords];
+
+    // Update stat cards
+    totalRecords.textContent = records.length;
+    totalReturned.textContent = records.filter(r => r.status === "returned").length;
+    totalBorrowed.textContent = records.filter(r => r.status === "borrowed").length;
+    totalOverdue.textContent = records.filter(r => r.status === "overdue").length;
+    const totalFinesAmount = records.reduce((sum, r) => sum + (Number(r.fineAmount) || 0), 0);
+    totalFines.textContent = `₦${totalFinesAmount.toLocaleString()}`;
 
     renderTable(filteredRecords);
 
-  }catch(error){
-    showError(error || "Error loading borrow records.");
+  } catch (error) {
+    showError("Error loading borrow records.");
   }
 }
 
@@ -100,16 +84,27 @@ function renderTable(records){
   // determine records to display
   const displayRecords = showingAll ? records : records.slice(0, 5);
 
+  const statusBadge = (status) => {
+    const map = {
+      returned: { label: "Returned", color: "#166534", bg: "#dcfce7" },
+      borrowed: { label: "Borrowed", color: "#1d4ed8", bg: "#dbeafe" },
+      overdue:  { label: "Overdue",  color: "#991b1b", bg: "#fee2e2" },
+    };
+    const s = map[status] || { label: status, color: "#374151", bg: "#f3f4f6" };
+    return `<span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px;background:${s.bg};color:${s.color};">${s.label}</span>`;
+  };
+
   displayRecords.forEach(record => {
     const tr = document.createElement("tr");
+    const fine = record.fineAmount || 0;
     tr.innerHTML = `
       <td>${record.user.name}</td>
       <td>${record.book.title}</td>
       <td>${new Date(record.borrowDate).toLocaleDateString()}</td>
       <td>${new Date(record.dueDate).toLocaleDateString()}</td>
-      <td>${record.returnDate ? new Date(record.returnDate).toLocaleDateString() : 'N/A'}</td>
-      <td>${record.status.charAt(0).toUpperCase() + record.status.slice(1)}</td>
-      <td>₦${(record.fineAmount || 0).toLocaleString()}</td>
+      <td>${record.returnDate ? new Date(record.returnDate).toLocaleDateString() : '—'}</td>
+      <td>${statusBadge(record.status)}</td>
+      <td style="${fine > 0 ? "color:#ef4444;font-weight:700;" : ""}">₦${fine.toLocaleString()}</td>
       <td><button class="edit" data-id="${record._id}">✏️</button></td>
     `;
     tableBody.appendChild(tr);
@@ -135,7 +130,7 @@ toggleBtn.addEventListener("click", ()=>{
 });
 
 // =================== INITIAL FETCH ===================
-fetchRecords();
+loadRecords();
 
 
 // === ✏️ UPDATE TRANSACTION (MODAL) =============================

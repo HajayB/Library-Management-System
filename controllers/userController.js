@@ -142,6 +142,7 @@ module.exports.profile = async (req, res) => {
       }
 
       return {
+        recordId: record._id,
         title: record.book?.title,
         author: record.book?.author,
         category: record.book?.category,

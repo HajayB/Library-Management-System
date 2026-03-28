@@ -3,101 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Library</title>
-  <link rel="stylesheet" href="style.css">
+  <title>About Us — Library System</title>
   <style>
-        /* ==== RESET ==== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
 
-    body {
-      background-color: #0d1117;
-      color: #e6edf3;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-     /* ==== NAVBAR ==== */
+    body { background-color: #0d1117; color: #e6edf3; min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* ==== NAVBAR ==== */
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 3rem;
-      background-color: #111827;
-      border-bottom: 1px solid #1f2937;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem; background-color: #111827;
+      border-bottom: 1px solid #1f2937; position: sticky; top: 0; z-index: 1000;
     }
+    .nav-left a { text-decoration: none; }
+    .nav-left h1 { font-size: 1.6rem; color: #3b82f6; font-weight: 600; }
+    .nav-right { display: flex; gap: 1.5rem; }
+    .nav-right a { color: #e6edf3; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .nav-right a:hover { color: #3b82f6; }
 
-    .nav-left h1 {
-      font-size: 1.6rem;
-      color: #3b82f6;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .nav-right {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .nav-right a {
-      color: #e6edf3;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    .nav-right a:hover {
-      color: #3b82f6;
-    }
-
-    /* Specific About page styles */
+    /* ==== HERO ==== */
     .about-hero {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
-      background: linear-gradient(135deg, #101624, #4f638c);
+      text-align: center; padding: 5rem 1rem 3rem;
+      background: linear-gradient(135deg, #0d1117 0%, #1e3a5f 50%, #0d1117 100%);
+      border-bottom: 1px solid #1f2937;
+    }
+    .about-hero h1 { color: #3b82f6; font-size: 2.8rem; margin-bottom: 1rem; font-weight: 700; }
+    .about-hero p { color: #9ca3af; font-size: 1.1rem; max-width: 640px; margin: 0 auto 2rem; line-height: 1.7; }
+
+    /* ==== STATS BAR ==== */
+    .stats-bar {
+      display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
+      background: #111827; border-top: 1px solid #1f2937; border-bottom: 1px solid #1f2937;
+    }
+    .stat-item {
+      flex: 1; min-width: 160px; text-align: center;
+      padding: 2rem 1.5rem; border-right: 1px solid #1f2937;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number { font-size: 2.2rem; font-weight: 700; color: #3b82f6; display: block; }
+    .stat-label { font-size: 0.85rem; color: #9ca3af; margin-top: 4px; }
+
+    /* ==== SECTION WRAPPER ==== */
+    .section { width: 90%; max-width: 960px; margin: 3.5rem auto; }
+    .section-title {
+      font-size: 1.6rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+      border-bottom: 2px solid #1f2937;
+    }
+    .section-title span { color: #3b82f6; }
+
+    /* ==== FEATURE CARDS ==== */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .feature-card {
+      background: #111827; border: 1px solid #1f2937; border-radius: 14px;
+      padding: 1.6rem; transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover { transform: translateY(-4px); border-color: #3b82f6; }
+    .feature-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 0.5rem; }
+    .feature-card p { font-size: 0.9rem; color: #9ca3af; line-height: 1.6; }
+
+    /* ==== ABOUT PARAGRAPHS ==== */
+    .about-text p { color: #d1d5db; line-height: 1.8; font-size: 1rem; margin-bottom: 1.2rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    /* ==== HOW IT WORKS ==== */
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step {
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 1.2rem 1.5rem;
+    }
+    .step-number {
+      background: #1d4ed8; color: #fff; font-weight: 700; font-size: 0.9rem;
+      width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; margin-top: 2px;
+    }
+    .step-body h4 { font-size: 0.95rem; font-weight: 700; color: #f0f6fc; margin-bottom: 3px; }
+    .step-body p { font-size: 0.875rem; color: #9ca3af; line-height: 1.5; }
+
+    /* ==== CTA ==== */
+    .cta {
+      text-align: center; background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; padding: 3rem 2rem; margin: 3.5rem auto 4rem;
+      max-width: 960px; width: 90%;
+    }
+    .cta h2 { font-size: 1.8rem; font-weight: 700; color: #f0f6fc; margin-bottom: 0.8rem; }
+    .cta p { color: #9ca3af; font-size: 1rem; margin-bottom: 1.8rem; max-width: 500px; margin-inline: auto; }
+    .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: #2563eb; color: #fff; text-decoration: none;
+      padding: 0.75rem 2rem; border-radius: 8px; font-weight: 600;
+      transition: background 0.2s; font-size: 0.95rem;
+    }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-secondary {
+      background: transparent; color: #e6edf3; text-decoration: none;
+      padding: 0.75rem 2rem; border-radius: 8px; font-weight: 600;
+      border: 1px solid #374151; transition: border-color 0.2s; font-size: 0.95rem;
+    }
+    .btn-secondary:hover { border-color: #3b82f6; color: #3b82f6; }
+
+    /* ==== FOOTER ==== */
+    footer {
+      text-align: center; padding: 1.5rem 0; font-size: 0.9rem;
+      color: #9ca3af; border-top: 1px solid #1f2937; margin-top: auto;
     }
 
-    .about-hero h1 {
-      color: #3a8ef6;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .about-hero p {
-      color: #bfc9d6;
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .about-content {
-      width: 90%;
-      max-width: 900px;
-      margin: 3rem auto;
-      color: #d1d5db;
-      line-height: 1.7;
-      font-size: 1.05rem;
-    }
-
-    .about-content h2 {
-      color: #3a8ef6;
-      margin-bottom: 1rem;
+    @media (max-width: 600px) {
+      .about-hero h1 { font-size: 2rem; }
+      nav { padding: 1rem 1.5rem; }
+      .stats-bar { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid #1f2937; }
+      .stat-item:last-child { border-bottom: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar (same as homepage) -->
+  <!-- Navbar -->
   <nav>
     <div class="nav-left">
-      <h1 class="logo">Library</h1>
+      <a href="/"><h1>Library</h1></a>
     </div>
     <div class="nav-right">
       <a href="/">Home</a>
@@ -107,23 +133,115 @@
     </div>
   </nav>
 
-  <!-- Hero section -->
+  <!-- Hero -->
   <section class="about-hero">
-    <h1>About Us</h1>
-    <p>Welcome to our Library! Our mission is to provide easy access to knowledge and create a welcoming environment for book lovers of all ages.</p>
+    <h1>About Our Library</h1>
+    <p>A modern library management system built to make borrowing, tracking, and returning books simple and transparent for both members and staff.</p>
   </section>
 
-  <!-- Main content -->
-  <section class="about-content">
-    <h2>Who We Are</h2>
-    <p>Our library has been serving the community for years, with a focus on providing a rich collection of books, digital resources, and a space for learning and growth. We believe that knowledge should be accessible to everyone.</p>
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-number">12+</span>
+      <div class="stat-label">Book Categories</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">14</span>
+      <div class="stat-label">Days Borrow Period</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">₦100</span>
+      <div class="stat-label">Fine Per Overdue Day</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">24/7</span>
+      <div class="stat-label">Online Access</div>
+    </div>
+  </div>
 
-    <h2>Our Vision</h2>
-    <p>We aim to foster a culture of reading and curiosity. Whether you are a student, a professional, or simply someone who loves books, our library is here to support your learning journey.</p>
+  <!-- What we offer -->
+  <div class="section">
+    <h2 class="section-title">What We <span>Offer</span></h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Wide Book Collection</h3>
+        <p>Browse across 12 categories — from Fiction and Science to Self-Help and Thriller. New titles added regularly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <h3>Easy Borrowing</h3>
+        <p>Search for any book online, borrow it in one click, and return it at the library desk. No queues, no paperwork.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Due Date Tracking</h3>
+        <p>Your dashboard shows countdown timers for every borrowed book so you never miss a due date.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Transparent Fines</h3>
+        <p>Fines are calculated automatically at ₦100 per overdue day. Pay at the library and the admin clears your record instantly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔐</div>
+        <h3>Secure Accounts</h3>
+        <p>Your account and borrow history are protected by JWT-based authentication. Only you can see your records.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌙</div>
+        <h3>Dark Mode</h3>
+        <p>Toggle between light and dark themes. Your preference is saved so it's consistent every time you log in.</p>
+      </div>
+    </div>
+  </div>
 
-    <h2>Our Team</h2>
-    <p>We are a team of passionate librarians, volunteers, and tech enthusiasts committed to making library resources accessible, organized, and enjoyable for all members.</p>
-  </section>
+  <!-- How it works -->
+  <div class="section">
+    <h2 class="section-title">How It <span>Works</span></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-body">
+          <h4>Create an Account</h4>
+          <p>Sign up with your name, email, and password. Your member account is ready immediately.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-body">
+          <h4>Browse the Catalogue</h4>
+          <p>Search or filter by title, author, or category. Each book shows how many copies are currently available.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-body">
+          <h4>Borrow Online</h4>
+          <p>Click "Borrow" on any available book. A 14-day period starts immediately and you can track it from your dashboard.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-body">
+          <h4>Return at the Library</h4>
+          <p>Bring the physical book to the library desk before the due date. If you return it on time, no fine applies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Ready to get started?</h2>
+    <p>Join the library today and get access to our full book collection.</p>
+    <div class="cta-buttons">
+      <a href="/api/users/signup" class="btn-primary">Create Account</a>
+      <a href="/" class="btn-secondary">Browse Books</a>
+    </div>
+  </div>
+
+  <footer>© 2026 Library Management System — All rights reserved.</footer>
 
 </body>
 </html>

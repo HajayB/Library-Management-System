@@ -53,17 +53,21 @@ const popularBooksTable = document.querySelector(".borrowed tbody");
     '<tr><td colspan="4">Loading records...</td></tr>';
 
 try {
-    // --- 1️⃣ Fetch user profile
-    const profileRes = await fetch("/api/users/myprofile", { headers });
+    // --- 1️⃣ Fetch profile + summary in parallel
+    const [profileRes, summaryRes] = await Promise.all([
+      fetch("/api/users/myprofile", { headers }),
+      fetch("/api/summary", { headers }),
+    ]);
+
     if (!profileRes.ok) throw new Error("Failed to fetch profile");
-    const profile = await profileRes.json();
+    if (!summaryRes.ok) throw new Error("Failed to fetch summary");
+
+    const [profile, summary] = await Promise.all([
+      profileRes.json(),
+      summaryRes.json(),
+    ]);
 
     welcomeText.textContent = `Welcome, ${profile.user.name}`;
-
-   // --- 2️⃣ Fetch summary
-    const summaryRes = await fetch("/api/summary", { headers });
-    if (!summaryRes.ok) throw new Error("Failed to fetch summary");
-    const summary = await summaryRes.json();
 
     cards[0].textContent = `${summary.stats.totalUsers.toLocaleString()}`;
     cards[1].textContent = `${summary.stats.totalBooks.toLocaleString()}`;
@@ -99,11 +103,8 @@ try {
       }
     });
 
-  // --- 3️⃣ Fetch Borrow Records
-    const popularRes = await fetch("/api/summary", { headers });
-    if (!popularRes.ok) throw new Error("Failed to fetch borrow records");
-    const mostBorrowed = await popularRes.json();
-    const mostBorrowedBooks = mostBorrowed.highlights.mostBorrowedBooks;
+  // --- 3️⃣ Most borrowed books (reuse the already-fetched summary)
+    const mostBorrowedBooks = summary.highlights.mostBorrowedBooks;
 
     // --- 🧾 Clear placeholder rows
     popularBooksTable.innerHTML = "";

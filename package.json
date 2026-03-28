@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start":"node app.js",
+    "run dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +21,7 @@
     "mongoose": "^8.20.4",
     "morgan": "^1.10.1",
     "node-cron": "^4.2.1",
-    "nodemon": "^3.1.10",
+    "nodemon": "^3.1.14",
     "save": "^2.9.0"
   }
 }

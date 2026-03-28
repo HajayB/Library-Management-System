@@ -142,13 +142,12 @@ body.dark .admin-role {
 }
 
 .card {
-  flex: 1 1 150px;
+  flex: 1 1 130px;
   background: #fff;
   border-radius: 8px;
   padding: 1rem 1.2rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   text-align: center;
-  margin: 1rem 3rem;
 }
 
 .card .label {
@@ -242,7 +241,7 @@ body.dark .borrowRecordsTable h2{
 .borrowRecordsTable th,
 .borrowRecordsTable td {
   text-align: left;
-  padding: 2rem 1rem;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid #e5e7eb;
 }
 

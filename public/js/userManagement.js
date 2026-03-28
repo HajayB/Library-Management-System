@@ -23,7 +23,7 @@ async function userCards(){
     cards[3].textContent = stats.usersJoinedThisMonth;
 
 }
-userCards();
+// userCards called together with getAllRecords and loadPage below
 
 //TABLE 
 
@@ -51,7 +51,7 @@ catch (err) {
   console.error(err);
   showError("Something went wrong while loading overdue records.");
 }
-}getAllRecords();
+}
 
 async function renderTable(records) {
     if (!tableBody) return;
@@ -209,7 +209,7 @@ function renderPagination(totalPages, currentPage) {
 }
 
 // Initial load
-loadPage(1);
+Promise.all([userCards(), getAllRecords(), loadPage(1)]);
 
 //MODAL POP UP 
 

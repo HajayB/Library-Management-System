@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Library — Library System</title>
+  <link rel="stylesheet" href="/css/userBooks.css" />
+  <script defer src="/js/userBooks.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-icon">📘</span>
+        <h2>Library System</h2>
+      </div>
+      <nav class="nav">
+        <a href="/api/users/dashboard"><i class="icon">🏠</i> Dashboard</a>
+        <a href="/api/users/library" class="active"><i class="icon">📚</i> Browse Library</a>
+      </nav>
+      <button class="logout" id="logoutBtn"><i class="icon">↩️</i> Logout</button>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+
+      <!-- Top bar -->
+      <header class="topbar">
+        <div class="user-info">
+          <span id="user-name">Loading...</span>
+          <span class="user-role">Member</span>
+        </div>
+        <div class="topbar-right">
+          <button id="theme-toggle" class="theme-toggle">🌙</button>
+          <button id="menu-toggle" class="menu-toggle">☰</button>
+        </div>
+      </header>
+
+      <!-- Toast notifications -->
+      <div class="toast" id="toast" style="display:none;"></div>
+
+      <!-- ===== LIBRARY SECTION ===== -->
+      <section class="library">
+        <h2>Browse Library</h2>
+        <p class="subtitle">Search and borrow books from our collection.</p>
+
+        <!-- Search & Filter controls -->
+        <div class="controls">
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              id="search-input"
+              class="search-box"
+              placeholder="Search by title, author, or category..."
+              autocomplete="off"
+            />
+          </div>
+          <select id="category-filter" class="filter-select">
+            <option value="">All Categories</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+            <option value="Science">Science</option>
+            <option value="Technology">Technology</option>
+            <option value="History">History</option>
+            <option value="Biography">Biography</option>
+            <option value="Self-Help">Self-Help</option>
+            <option value="Children">Children</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Thriller">Thriller</option>
+          </select>
+        </div>
+
+        <!-- Results info bar -->
+        <div class="results-bar">
+          <span id="results-count">Loading books...</span>
+        </div>
+
+        <!-- Books grid -->
+        <div class="books-grid" id="books-grid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== BORROW CONFIRMATION MODAL ===== -->
+  <div class="modal-overlay" id="borrow-modal" style="display:none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Confirm Borrow</h3>
+        <button class="modal-close" id="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro">You are about to borrow:</p>
+        <div class="modal-book-info">
+          <div class="modal-book-title" id="modal-book-title">—</div>
+          <div class="modal-book-author" id="modal-book-author">—</div>
+        </div>
+        <div class="modal-details">
+          <div class="detail-row">
+            <span class="detail-label">Borrow Date</span>
+            <span class="detail-value" id="modal-borrow-date">—</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Due Date</span>
+            <span class="detail-value" id="modal-due-date">—</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Fine Rate</span>
+            <span class="detail-value fine-rate">₦100 / day if overdue</span>
+          </div>
+        </div>
+        <p class="modal-note">📌 Return by the due date to avoid fines. Returns are processed at the library desk.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="modal-cancel">Cancel</button>
+        <button class="btn-primary" id="modal-confirm">Borrow Book</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

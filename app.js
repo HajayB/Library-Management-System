@@ -55,6 +55,10 @@ app.get("/api/users/dashboard", (req,res)=>{
   res.sendFile(path.join(__dirname, "public", "userDash.html"));
 })
 
+app.get("/api/users/library", (req,res)=>{
+  res.sendFile(path.join(__dirname, "public", "userBooks.html"));
+})
+
 app.get("/api/users/admin/dashboard", (req,res)=>{
   res.sendFile(path.join(__dirname, "public", "adminDash.html"));
 })

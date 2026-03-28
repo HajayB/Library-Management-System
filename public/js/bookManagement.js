@@ -52,16 +52,7 @@ const headers = returnHeader();
   
 // ================Load books (for table)==============================
 
-let allBooks = []; // empty array to keep books for later 
-  try{
-      const booksRes = await fetch("/api/books", { headers });
-      if (!booksRes.ok) throw new Error("Failed to fetch books");
-      const books = await booksRes.json();
-      allBooks = books; //stores all books
-      renderBooks(books);  
-  }catch(error){
-    console.error(error);
-  }
+let allBooks = []; // populated by loadPage()
 
 function renderBooks(books) {
   booksTable.innerHTML = "";

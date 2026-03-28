@@ -148,20 +148,17 @@ body.dark .overdue td{
 /*===========CARD STYLE============*/
 .stats-cards {
   display: flex;
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    max-width: 100%;
-    min-width:fit-content;
-    width:260px;
-    display:flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 40px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
 }
 
 .card-icon {
@@ -185,10 +182,6 @@ body.dark .card p {
 /*=============TABLE STYLE===============*/
 
 .table-container { position: relative; }
-    td.action { text-align: center; cursor: pointer; color: #007bff; }
-    td.action:hover { color: #0056b3; }
-    .filter-box { position: absolute; top: -40px; right: 0; }
-    .filter-box input { padding: 6px 10px; border-radius: 4px; border: 1px solid #ccc; }
 
 table {
   width: 100%;

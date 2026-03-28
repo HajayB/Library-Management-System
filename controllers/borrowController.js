@@ -133,7 +133,7 @@ try {
       const due = new Date(record.dueDate);
       let shouldUpdate = false;
 
-      if (record.status === "borrowed" && now.getTime() > due.getTime()) {
+      if ((record.status === "borrowed" || record.status === "overdue") && now.getTime() > due.getTime()) {
         record.status = "overdue";
         record.fineAmount = Math.max(0, Math.floor((now - due) / (1000 * 60 * 60 * 24)) * 100);
         shouldUpdate = true;
