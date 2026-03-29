@@ -134,6 +134,10 @@ body.dark .admin-role {
   color: var(--text);
 }
 
+.menu-toggle {
+  display: none;
+}
+
 .borrow-summary {
   display: flex;
   gap: 1rem;
@@ -229,6 +233,7 @@ body.dark .borrowRecordsTable h2{
 
 .borrowRecordsTable table {
   width: 100%;
+  min-width: 700px;
   border-collapse: collapse;
   font-size: 0.95rem;
   color: #333;
@@ -418,4 +423,41 @@ body.dark .modal-content{
   .menu-toggle {
     display: inline-block;
   }
+
+  .container {
+    overflow-x: hidden;
+  }
+
+  .main-content {
+    min-width: 0;
+    width: 100%;
+    padding: 16px;
+  }
+
+  .side-by-side {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .search-box {
+    flex: none;
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 95vw;
+  }
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.sidebar-overlay.active {
+  display: block;
 }

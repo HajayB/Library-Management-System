@@ -134,6 +134,10 @@ body.dark .admin-role {
   color: var(--text);
 }
 
+.menu-toggle {
+  display: none;
+}
+
 body.dark .overdue th{
   background: #334155;
   color: #f1f5f9;  
@@ -185,6 +189,7 @@ body.dark .card p {
 
 table {
   width: 100%;
+  min-width: 500px;
   border-collapse: collapse;
   background: #fff;
   border-radius: 5px;
@@ -262,4 +267,34 @@ tr:hover {
   .menu-toggle {
     display: inline-block;
   }
+
+  .container {
+    overflow-x: hidden;
+  }
+
+  .main-content {
+    min-width: 0;
+    width: 100%;
+    padding: 16px;
+  }
+
+  .stats-cards {
+    flex-direction: column;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.sidebar-overlay.active {
+  display: block;
 }

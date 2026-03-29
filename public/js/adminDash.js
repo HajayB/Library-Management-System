@@ -16,9 +16,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 // ===== Sidebar toggle (mobile)
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.querySelector('.sidebar');
+
+const overlay = document.createElement('div');
+overlay.className = 'sidebar-overlay';
+document.body.appendChild(overlay);
+
+function closeSidebar() {
+  sidebar.classList.remove('active');
+  overlay.classList.remove('active');
+}
+
 menuToggle.addEventListener('click', () => {
-  sidebar.classList.toggle('active');
+  const isOpen = sidebar.classList.toggle('active');
+  overlay.classList.toggle('active', isOpen);
 });
+
+overlay.addEventListener('click', closeSidebar);
 
 // ===== Dark mode toggle
 const themeToggle = document.getElementById('theme-toggle');

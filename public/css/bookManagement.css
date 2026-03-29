@@ -145,6 +145,10 @@ body.dark .added td{
   cursor: pointer;
   color: var(--text);
 }
+
+.menu-toggle {
+  display: none;
+}
 /*========TABLE STYLING==========*/
 .added h2 {
   margin-bottom: 1rem;
@@ -152,6 +156,7 @@ body.dark .added td{
 }
 table {
   width: 100%;
+  min-width: 550px;
   border-collapse: collapse;
   background: #fff;
   border-radius: 5px;
@@ -457,4 +462,34 @@ body.dark .modal-content{
   .menu-toggle {
     display: inline-block;
   }
+
+  .container {
+    overflow-x: hidden;
+  }
+
+  .main-content {
+    min-width: 0;
+    width: 100%;
+    padding: 16px;
+  }
+
+  .added {
+    overflow-x: auto;
+  }
+
+  .modal-content {
+    width: 95vw;
+  }
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.sidebar-overlay.active {
+  display: block;
 }
